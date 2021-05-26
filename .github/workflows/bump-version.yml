@@ -33,4 +33,4 @@ jobs:
 
     steps:
       - name: 'Get current package.json version'
-        run: echo package.json
+        run: cat package.json
