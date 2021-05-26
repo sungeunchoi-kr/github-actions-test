@@ -35,7 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      - name: 'Print package.json'
+        run: cat $GITHUB_WORKSPACE/package.json
 
