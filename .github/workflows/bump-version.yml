@@ -25,3 +25,11 @@ jobs:
       uses:  'rimonhanna/gh-action-bump-version@master'
       with:
         tag-prefix:  ''
+
+  build-and-deploy:
+    name: "Build and Deploy"
+    needs: bump-version
+
+    steps:
+      - name: 'Get current package.json version'
+        run: echo package.json
