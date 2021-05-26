@@ -22,22 +22,20 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name:  'Automated Github Action Version Bump'
-      uses:  'rimonhanna/gh-action-bump-version@master'
+    - name: 'Automated Github Action Version Bump'
+      uses: 'rimonhanna/gh-action-bump-version@master'
       with:
-        tag-prefix:  ''
+        tag-prefix: ''
 
     - name: 'Print package.json'
       run: cat $GITHUB_WORKSPACE/package.json
 
-      #build-and-deploy:
-      #  name: "Build and Deploy"
-      #  runs-on: ubuntu-latest
-      #  needs: bump-version
+    - name: 'Print current version'
+      run: echo $(npm run env | grep npm_package_version | cut -d '=' -f 2)
 
-      #  steps:
-      #  - uses: actions/checkout@v2
+    - name: 'Save current version'
+      run: echo "PACKAGE_VERSION=$(npm run env | grep npm_package_version | cut -d '=' -f 2)" >> $GITHUB_ENV
 
-      #  - name: 'Print package.json'
-      #    run: cat $GITHUB_WORKSPACE/package.json
+    - name: 'Print version'
+      run: echo $PACKAGE_VERSION
 
