@@ -32,5 +32,7 @@ jobs:
     needs: bump-version
 
     steps:
-      - name: 'Get current package.json version'
-        run: cat package.json
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+
